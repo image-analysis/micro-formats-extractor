@@ -255,7 +255,7 @@ macro "Micro-Formats Extractor" {
     }
   }
 
-  showMessage("Processing Completed");
+  showMessage("Extraction Complete");
   run("Close All");
   run("Collect Garbage");
   setBatchMode(false);
