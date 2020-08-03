@@ -1,5 +1,5 @@
 // Micro-Formats Extractor For Z Projections macro by Daniel Waiger and Tal Luigi
-// Based on the ZStacks Projector and Christophe Leterrier's Leica LIF Extractor macros
+// Based on the Z-Stacks Projector and Christophe Leterrier's Leica LIF Extractor macros
 // Tested with ImageJ 1.52p and BioFormats 6.6.0
 // Version 1.0.1 28/07/2020
 
@@ -67,10 +67,10 @@ macro "Micro-Formats Extractor" {
   var closeChoice = Dialog.getCheckbox();
 
   setBatchMode(true);
-	// Adapt file format acorrding to your microscope.
+  // Adapt file format acorrding to your microscope.
   // Loop on all .lei, .lsm, .czi or .lif extensions - change the file format below
   for (var n = 0; n < allExtensions.length; n++) {
-    if (allExtensions[n] == ".lei" || allExtensions[n] == ".lif") {
+    if (allExtensions[n] == ".lei" || allExtensions[n] == ".lif" || allExtensions[n] == ".lsm" || allExtensions[n] == ".czi") {
       // Get the file path
       var filePath = directoryPath + allNames[n];
 
@@ -134,25 +134,25 @@ macro "Micro-Formats Extractor" {
 
         print(
           "seriesNames[" +
-            i +
-            "]: " +
-            seriesNames[i] +
-            " (temporaryName: " +
-            temporaryName +
-            ")"
+          i +
+          "]: " +
+          seriesNames[i] +
+          " (temporaryName: " +
+          temporaryName +
+          ")"
         );
 
         // Import the series (split channels)
         run(
           "Bio-Formats Importer",
           "open=[" +
-            filePath +
-            "] " +
-            "split_channels " +
-            "view=[Standard ImageJ] " +
-            "stack_order=Default " +
-            "series_" +
-            d2s(i + 1, 0)
+          filePath +
+          "] " +
+          "split_channels " +
+          "view=[Standard ImageJ] " +
+          "stack_order=Default " +
+          "series_" +
+          d2s(i + 1, 0)
         );
 
         // Loop on each channel (each opened window)
