@@ -181,7 +181,7 @@ macro "Micro-Formats Extractor" {
               "rolling=" + backgroundType + " sliding disable stack"
             );
 
-            type = type + " - BG";
+            type = type + " Sub_BG";
           }
 
           if (filterType == "Median") {
